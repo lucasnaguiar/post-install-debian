@@ -81,7 +81,7 @@ sudo -u $REAL_USER bash -c 'curl -s "https://get.sdkman.io" | bash'
 
 
 # --- 6. Instalação de Aplicativos Manuais ---
-echo ">>> (6/8) Instalando aplicativos manuais (Postman, IntelliJ IDEA)..."
+echo ">>> (6/8) Instalando aplicativos manuais (Postman)..."
 
 # Postman
 echo "Instalando Postman..."
@@ -104,33 +104,8 @@ Categories=Development;Utilities;
 StartupWMClass=Postman
 EOF
 
-# IntelliJ IDEA Community Edition
-echo "Instalando IntelliJ IDEA..."
-# Usando o link permanente para a versão estável mais recente
-wget -qO /tmp/idea.tar.gz "https://download.jetbrains.com/idea/ideaIU-latest.tar.gz"
-tar -xzf /tmp/idea.tar.gz -C /opt
-rm /tmp/idea.tar.gz
-# Encontra o nome da pasta extraída, que muda a cada versão
-IDEA_DIR_NAME=$(find /opt -maxdepth 1 -type d -name "idea-IU-*")
-mv "$IDEA_DIR_NAME" /opt/idea
-
-# Cria o atalho .desktop para o IntelliJ IDEA
-cat << EOF > /home/$REAL_USER/.local/share/applications/idea.desktop
-[Desktop Entry]
-Name=IntelliJ IDEA
-GenericName=Integrated Development Environment
-Comment=Java IDE
-Exec=/opt/idea/bin/idea.sh
-Terminal=false
-Type=Application
-Icon=/opt/idea/bin/idea.svg
-Categories=Development;Utilities;
-StartupWMClass=jetbrains-idea
-EOF
-
 # Ajusta as permissões dos arquivos .desktop
 chown $REAL_USER:$REAL_USER /home/$REAL_USER/.local/share/applications/postman.desktop
-chown $REAL_USER:$REAL_USER /home/$REAL_USER/.local/share/applications/idea.desktop
 
 
 # --- 7. Configuração Final do Ambiente ---
