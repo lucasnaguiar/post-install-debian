@@ -10,10 +10,13 @@ then
     exit 1
 fi
 
-# Define as variáveis com seus dados para fácil edição
-GIT_USER_NAME="Lucas Aguiar"
-GIT_USER_EMAIL="lucasbarbary@gmail.com"
+# Solicita as informações do usuário
+echo ">>> Configuração do Git - Informe seus dados:"
+echo ""
+read -p "Digite seu nome completo: " GIT_USER_NAME
+read -p "Digite seu email: " GIT_USER_EMAIL
 
+echo ""
 echo ">>> Configurando o Git com as seguintes informações:"
 echo "Nome:  $GIT_USER_NAME"
 echo "Email: $GIT_USER_EMAIL"
