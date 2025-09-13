@@ -42,7 +42,7 @@ apt install -y \
     fonts-firacode fonts-font-awesome fonts-jetbrains-mono \
     vlc qbittorrent filezilla gimp inkscape vokoscreen-ng \
     bluez bluez-tools blueman \
-    flatpak
+    flatpak btop paper-icon-theme thunar
 
 
 # --- 3. Configuração do Flatpak ---
