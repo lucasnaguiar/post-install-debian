@@ -138,6 +138,9 @@ echo ">>> (7/8) Definindo Zsh como o shell padrão para o usuário $REAL_USER...
 chsh -s "$(which zsh)" "$REAL_USER"
 
 
+#TODO
+# nvm, greenclip
+
 # --- 8. Finalização ---
 echo ""
 echo ">>> (8/8) Instalação concluída com sucesso!"
