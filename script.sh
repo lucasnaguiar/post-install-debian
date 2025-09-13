@@ -31,7 +31,7 @@ fi
 
 
 # --- 1. Atualização do Sistema ---
-echo ">>> (1/8) Atualizando o sistema e os pacotes..."
+echo ">>> (1/7) Atualizando o sistema e os pacotes..."
 apt update && apt upgrade -y
 
 
@@ -80,45 +80,20 @@ echo "Instalando SDKMAN..."
 sudo -u $REAL_USER bash -c 'curl -s "https://get.sdkman.io" | bash'
 
 
-# --- 6. Instalação de Aplicativos Manuais ---
-echo ">>> (6/8) Instalando aplicativos manuais (Postman)..."
-
-# Postman
-echo "Instalando Postman..."
-wget -qO /tmp/postman.tar.gz "https://dl.pstmn.io/download/latest/linux64"
-tar -xzf /tmp/postman.tar.gz -C /opt
-rm /tmp/postman.tar.gz
-mv /opt/Postman /opt/postman
-
-# Cria o atalho .desktop para o Postman
-cat << EOF > /home/$REAL_USER/.local/share/applications/postman.desktop
-[Desktop Entry]
-Name=Postman
-GenericName=API Client
-Comment=Make and view REST API calls and responses
-Exec=/opt/postman/Postman
-Terminal=false
-Type=Application
-Icon=/opt/postman/app/resources/app/assets/icon.png
-Categories=Development;Utilities;
-StartupWMClass=Postman
-EOF
-
-# Ajusta as permissões dos arquivos .desktop
-chown $REAL_USER:$REAL_USER /home/$REAL_USER/.local/share/applications/postman.desktop
 
 
-# --- 7. Configuração Final do Ambiente ---
-echo ">>> (7/8) Definindo Zsh como o shell padrão para o usuário $REAL_USER..."
+
+# --- 6. Configuração Final do Ambiente ---
+echo ">>> (6/7) Definindo Zsh como o shell padrão para o usuário $REAL_USER..."
 chsh -s "$(which zsh)" "$REAL_USER"
 
 
 #TODO
 # nvm, greenclip
 
-# --- 8. Finalização ---
+# --- 7. Finalização ---
 echo ""
-echo ">>> (8/8) Instalação concluída com sucesso!"
+echo ">>> (7/7) Instalação concluída com sucesso!"
 echo ""
 echo "----------------------------------------------------------------"
 echo "  AÇÃO NECESSÁRIA:  "
