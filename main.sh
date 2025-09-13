@@ -38,11 +38,11 @@ apt update && apt upgrade -y
 # --- 2. Instalação de Pacotes via APT ---
 echo ">>> (2/8) Instalando pacotes essenciais via APT..."
 apt install -y \
-    curl git zsh i3 i3blocks rofi zip unzip neovim chromium \
+    curl git zsh i3 i3blocks rofi arandr zip unzip neovim chromium \
     fonts-firacode fonts-font-awesome fonts-jetbrains-mono \
     vlc qbittorrent filezilla gimp inkscape vokoscreen-ng \
     bluez bluez-tools blueman \
-    flatpak btop paper-icon-theme thunar lxappearance
+    flatpak btop paper-icon-theme thunar lxappearance nitrogen
 
 
 # --- 3. Configuração do Flatpak ---
