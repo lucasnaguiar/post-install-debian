@@ -16,6 +16,7 @@ fi
 INSTALL_DIR="/opt"
 FINAL_DIR_NAME="idea"
 DESKTOP_SHORTCUT_PATH="$USER_HOME/.local/share/applications/idea.desktop"
+BINARY_WRAPPER="/usr/local/bin/idea"
 
 # --- Check if already installed ---
 if [ -d "$INSTALL_DIR/$FINAL_DIR_NAME" ]; then
@@ -31,20 +32,30 @@ GenericName=Integrated Development Environment
 X-GNOME-FullName=Java Integrated Development Environment
 Comment=Idea Java IDE
 Keywords=java;
-Exec=/opt/idea/bin/idea
+Exec=$BINARY_WRAPPER %f
 Terminal=false
 Type=Application
-Icon=/opt/idea/bin/idea.svg
+Icon=$INSTALL_DIR/$FINAL_DIR_NAME/bin/idea.svg
 Categories=Development;Utilities;
 StartupWMClass=jetbrains-intellij
 EOF
+    fi
+
+    # Check if binary wrapper exists
+    if [ ! -f "$BINARY_WRAPPER" ]; then
+        echo ">>> Creating binary wrapper in $BINARY_WRAPPER..."
+        cat << 'EOF' | sudo tee "$BINARY_WRAPPER" > /dev/null
+#!/bin/bash
+/opt/idea/bin/idea "$@" >/dev/null 2>&1 &
+EOF
+        sudo chmod +x "$BINARY_WRAPPER"
     fi
     
     exit 0
 fi
 
 # URL for the latest IntelliJ IDEA Ultimate for Linux
-IDEA_URL="https://download.jetbrains.com/idea/ideaIU-2025.2.1.tar.gz"
+IDEA_URL="https://download.jetbrains.com/idea/ideaIU-2025.2.2.tar.gz"
 
 # Temporary file to store the download
 TMP_FILE="/tmp/idea.tar.gz"
@@ -61,7 +72,6 @@ tar -xzf "$TMP_FILE" -C "$INSTALL_DIR"
 
 # --- 3. Rename the folder ---
 echo ">>> Renaming the folder..."
-# Find the extracted folder name (it usually contains the version number)
 EXTRACTED_DIR=$(find "$INSTALL_DIR" -maxdepth 1 -type d -name "$EXTRACTED_DIR_NAME" | head -n 1)
 
 if [ -z "$EXTRACTED_DIR" ]; then
@@ -69,7 +79,6 @@ if [ -z "$EXTRACTED_DIR" ]; then
     exit 1
 fi
 
-# Rename the directory
 mv "$EXTRACTED_DIR" "$INSTALL_DIR/$FINAL_DIR_NAME"
 
 # --- 4. Create Desktop Shortcut ---
@@ -81,16 +90,25 @@ GenericName=Integrated Development Environment
 X-GNOME-FullName=Java Integrated Development Environment
 Comment=Idea Java IDE
 Keywords=java;
-Exec=/opt/idea/bin/idea
+Exec=$BINARY_WRAPPER %f
 Terminal=false
 Type=Application
-Icon=/opt/idea/bin/idea.svg
+Icon=$INSTALL_DIR/$FINAL_DIR_NAME/bin/idea.svg
 Categories=Development;Utilities;
 StartupWMClass=jetbrains-intellij
 EOF
 
-# --- 5. Clean up ---
+# --- 5. Create Binary Wrapper ---
+echo ">>> Creating binary wrapper in $BINARY_WRAPPER..."
+cat << 'EOF' | sudo tee "$BINARY_WRAPPER" > /dev/null
+#!/bin/bash
+/opt/idea/bin/idea "$@" >/dev/null 2>&1 &
+EOF
+sudo chmod +x "$BINARY_WRAPPER"
+
+# --- 6. Clean up ---
 echo ">>> Cleaning up..."
 rm "$TMP_FILE"
 
 echo ">>> IntelliJ IDEA Ultimate installed successfully in $INSTALL_DIR/$FINAL_DIR_NAME"
+echo ">>> You can now run it using: idea ~/projeto"
