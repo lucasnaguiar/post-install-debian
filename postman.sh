@@ -8,7 +8,7 @@ rm /tmp/postman.tar.gz
 mv /opt/Postman /opt/postman
 
 # Cria o atalho .desktop para o Postman
-cat << EOF > /home/$REAL_USER/.local/share/applications/postman.desktop
+cat << EOF > /home/lucas/.local/share/applications/postman.desktop
 [Desktop Entry]
 Name=Postman
 GenericName=API Client
@@ -20,6 +20,3 @@ Icon=/opt/postman/app/resources/app/assets/icon.png
 Categories=Development;Utilities;
 StartupWMClass=Postman
 EOF
-
-# Ajusta as permissões dos arquivos .desktop
-chown $REAL_USER:$REAL_USER /home/$REAL_USER/.local/share/applications/postman.desktop
