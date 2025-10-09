@@ -41,8 +41,7 @@ apt install -y \
     curl git zsh i3 i3blocks rofi arandr zip unzip neovim chromium \
     fonts-firacode fonts-font-awesome fonts-jetbrains-mono \
     vlc qbittorrent filezilla gimp inkscape vokoscreen-ng \
-    bluez bluez-tools blueman \
-    flatpak btop paper-icon-theme thunar lxappearance nitrogen
+    flatpak btop paper-icon-theme lxappearance nitrogen flameshot
 
 
 # --- 3. Configuração do Flatpak ---
@@ -54,7 +53,7 @@ flatpak install -y flathub com.discordapp.Discord
 flatpak install -y flathub com.github.johnfactotum.Foliate
 flatpak install -y flathub md.obsidian.Obsidian
 flatpak install -y flathub com.spotify.Client
-
+flatpak install flathub org.kde.ghostwriter
 
 # --- 4. Instalação de Pacotes .deb e de Fontes Externas ---
 echo ">>> (4/8) Instalando Google Chrome..."
