@@ -95,7 +95,7 @@ Terminal=false
 Type=Application
 Icon=$INSTALL_DIR/$FINAL_DIR_NAME/bin/idea.svg
 Categories=Development;Utilities;
-StartupWMClass=jetbrains-intellij
+StartupWMClass=jetbrains-idea
 EOF
 
 # --- 5. Create Binary Wrapper ---
