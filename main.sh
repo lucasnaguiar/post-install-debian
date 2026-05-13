@@ -30,7 +30,7 @@ echo ">>> (2/7) Instalando pacotes essenciais via DNF..."
 dnf install -y \
     curl git zsh rofi zip unzip neovim chromium \
     vlc qbittorrent filezilla gimp inkscape flameshot \
-    flatpak btop gparted
+    flatpak btop gparted jetbrains-mono-fonts
 
 
 # --- 3. Instalação do Google Chrome ---
