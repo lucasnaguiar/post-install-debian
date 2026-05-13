@@ -28,9 +28,9 @@ dnf upgrade -y
 # --- 2. Instalação de Pacotes via DNF ---
 echo ">>> (2/7) Instalando pacotes essenciais via DNF..."
 dnf install -y \
-    curl git zsh rofi zip unzip neovim chromium \
+    curl git zsh wofi zip unzip neovim chromium \
     vlc qbittorrent filezilla gimp inkscape flameshot \
-    flatpak btop gparted jetbrains-mono-fonts gnome-tweaks
+    flatpak btop gparted jetbrains-mono-fonts gnome-tweaks copyq
 
 
 # --- 3. Instalação do Google Chrome ---
