@@ -47,7 +47,7 @@ flatpak install -y flathub com.discordapp.Discord
 flatpak install -y flathub com.github.johnfactotum.Foliate
 flatpak install -y flathub com.spotify.Client
 flatpak install flathub io.github.mfat.sshpilot
-
+flatpak install flathub com.bitwarden.desktop
 
 # --- 5. Instalação de Ferramentas de Desenvolvimento ---
 echo ">>> (5/7) Instalando ferramentas de desenvolvimento para o usuário: $REAL_USER"
