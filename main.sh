@@ -30,7 +30,7 @@ echo ">>> (2/7) Instalando pacotes essenciais via DNF..."
 dnf install -y \
     curl git zsh rofi zip unzip neovim chromium \
     vlc qbittorrent filezilla gimp inkscape flameshot \
-    flatpak btop gparted jetbrains-mono-fonts
+    flatpak btop gparted jetbrains-mono-fonts gnome-tweaks
 
 
 # --- 3. Instalação do Google Chrome ---
@@ -46,6 +46,7 @@ echo ">>> (4/7) Instalando aplicativos via Flatpak..."
 flatpak install -y flathub com.discordapp.Discord
 flatpak install -y flathub com.github.johnfactotum.Foliate
 flatpak install -y flathub com.spotify.Client
+flatpak install flathub io.github.mfat.sshpilot
 
 
 # --- 5. Instalação de Ferramentas de Desenvolvimento ---
